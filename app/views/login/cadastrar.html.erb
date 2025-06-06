@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Cadastrar-se</h1>
+
+    <%= render 'msg/info' %>
+
+    <%= form_with model: @user, url: cadastrar_path, local: true do |f| %>
+        <div class="input">
+            <%= f.text_field :nome, placeholder: "Digite seu nome" %><br>
+            <%= f.email_field :email, placeholder: "Digite seu email" %><br>
+            <%= f.password_field :senha, placeholder: "Digite sua senha" %><br>
+            <%= f.password_field :conf_senha, placeholder: "Confirme sua senha" %><br>
+        </div>
+
+        <div class="button">
+            <%= f.submit "Cadastrar-se" %>
+        </div>
+    <% end %>
+
+
+</body>
+</html>
+
+<% content_for :scripts do %>
+  <%= stylesheet_link_tag "login_cadastro/login" %>
+<% end %>

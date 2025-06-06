@@ -1,0 +1,22 @@
+<% if flash[:notice] %>
+  <div style="color: green; font-weight: bold;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div style="color: red; font-weight: bold;">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<% if defined?(@user) && @user.errors.any? %>
+  <div id="error_explanation" style="color: red;">
+    <h2><%= pluralize(@user.errors.count, "erro") %> proibiu este usuário de ser salvo:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

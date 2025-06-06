@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <%= render 'msg/info' %>
+    
+    <%= form_with url: login_path, method: :post, local: true do |f| %>
+    <div class="input">
+        <%= f.email_field :email, placeholder: "Digite seu email" %><br>
+        <%= f.password_field :senha, placeholder: "Digite sua senha" %>
+    </div>
+
+    <div class="button">
+        <%= f.submit "Entrar" %>
+       <button> <%= link_to "Cadastrar", cadastrar_path%> </button>
+    </div>
+    <% end %>
+
+</body>
+</html>
+
+<% content_for :scripts do %>
+  <%= stylesheet_link_tag "login_cadastro/login" %>
+<% end %>
