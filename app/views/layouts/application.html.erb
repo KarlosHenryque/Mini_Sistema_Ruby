@@ -7,11 +7,21 @@
 
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= yield :stylesheets %>
+  </head> <!-- <- ESSA TAG ESTAVA FALTANDO -->
 
   <body>
+    <!-- Toasts vão aparecer aqui -->
+    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+    <!-- Partial que envia os dados flash para o JS -->
+    <%= render 'msg/info' %>
+
+    <!-- Conteúdo principal da aplicação -->
     <%= yield %>
 
+    <!-- Scripts -->
     <%= javascript_include_tag "application", defer: true %>
+    <%= javascript_include_tag "flash_swal", defer: true %>
     <%= yield :scripts %>
   </body>
 </html>

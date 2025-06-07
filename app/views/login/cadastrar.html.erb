@@ -6,27 +6,42 @@
     <title>Cadastro</title>
 </head>
 <body>
-    <h1>Cadastrar-se</h1>
+    <div class="titulo">
+        <h1>Gorilla Ice Fit</h1>
+    </div>
 
-    <%= render 'msg/info' %>
+    <div class="container">
+        <%= link_to login_path, class: 'back-to-login' do %>
+              <%= image_tag 'icons/arrow-left.png', alt: 'Voltar para Login', size: '30x30' %>
+        <% end %>
 
-    <%= form_with model: @user, url: cadastrar_path, local: true do |f| %>
-        <div class="input">
-            <%= f.text_field :nome, placeholder: "Digite seu nome" %><br>
-            <%= f.email_field :email, placeholder: "Digite seu email" %><br>
-            <%= f.password_field :senha, placeholder: "Digite sua senha" %><br>
-            <%= f.password_field :conf_senha, placeholder: "Confirme sua senha" %><br>
+        <div class="container-left-form">
+            <div class="logo">
+                <%= image_tag "logo.png" , alt: "Logo" %>
+            </div>
+            <h1>Cadastrar-se</h1>
+            <%= form_with model: @user, url: cadastrar_path, local: true do |f| %>
+                <div class="input">
+                    <%= f.text_field :nome, placeholder: "Digite seu nome", class: "form-input-field" %>
+                    <%= f.email_field :email, placeholder: "Digite seu email", class: "form-input-field" %>
+                    <%= f.password_field :senha, placeholder: "Digite sua senha", class: "form-input-field" %>
+                    <%= f.password_field :conf_senha, placeholder: "Confirme sua senha", class: "form-input-field"%>
+                </div>
+
+                <div class="button">
+                    <%= f.submit "Cadastrar-se", class: "btn-submit" %>
+                </div>
+            <% end %>
         </div>
 
-        <div class="button">
-            <%= f.submit "Cadastrar-se" %>
+        <div class="container-right-image">
+            <%= image_tag "banner.png" , alt: "Treino" %>
         </div>
-    <% end %>
-
+    </div>
 
 </body>
 </html>
 
 <% content_for :scripts do %>
-  <%= stylesheet_link_tag "login_cadastro/login" %>
+    <%= stylesheet_link_tag "login_cadastro/cadastro" %>
 <% end %>
