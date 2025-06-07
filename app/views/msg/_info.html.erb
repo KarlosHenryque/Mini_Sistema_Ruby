@@ -1,22 +1,17 @@
+<% flash_data = {} %>
+
 <% if flash[:notice] %>
-  <div style="color: green; font-weight: bold;">
-    <%= flash[:notice] %>
-  </div>
+  <% flash_data[:notice] = [flash[:notice]] %> 
 <% end %>
 
 <% if flash[:alert] %>
-  <div style="color: red; font-weight: bold;">
-    <%= flash[:alert] %>
-  </div>
+  <% flash_data[:alert] = [flash[:alert]] %>
 <% end %>
 
 <% if defined?(@user) && @user.errors.any? %>
-  <div id="error_explanation" style="color: red;">
-    <h2><%= pluralize(@user.errors.count, "erro") %> proibiu este usuário de ser salvo:</h2>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+  <% flash_data[:alert] = @user.errors.full_messages %> 
+<% end %>
+
+<%= content_tag :script, id: 'flash-data', type: 'application/json' do %>
+  <%= flash_data.to_json.html_safe %>
 <% end %>
